@@ -1,0 +1,44 @@
+/* pages/learn/learn.wxss */
+.progress-header { margin-bottom: 30rpx; }
+.progress-text { display: block; text-align: center; font-size: 28rpx; color: #909399; margin-bottom: 10rpx; }
+.progress-bar { height: 8rpx; background: #e0e0e0; border-radius: 4rpx; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #409eff, #67c23a); transition: width 0.3s; }
+
+.word-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.08);
+  min-height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.word-main { margin-bottom: 40rpx; }
+.word { font-size: 56rpx; font-weight: bold; color: #303133; display: block; }
+.phonetic { font-size: 28rpx; color: #909399; margin-top: 16rpx; display: block; }
+
+.word-meaning { margin-top: 30rpx; padding-top: 30rpx; border-top: 1rpx solid #eee; }
+.meaning { font-size: 36rpx; color: #606266; display: block; }
+.example { font-size: 26rpx; color: #909399; margin-top: 20rpx; display: block; font-style: italic; }
+
+.show-btn {
+  margin-top: 40rpx;
+  padding: 20rpx 40rpx;
+  background: #f5f7fa;
+  border-radius: 40rpx;
+  color: #409eff;
+  font-size: 28rpx;
+}
+
+.empty-state { text-align: center; padding: 100rpx 0; }
+.empty-icon { font-size: 100rpx; display: block; margin-bottom: 20rpx; }
+.empty-text { font-size: 32rpx; color: #606266; display: block; margin-bottom: 40rpx; }
+
+.action-buttons {
+  display: flex;
+  gap: 30rpx;
+  margin-top: 60rpx;
+}
+.action-btn { flex: 1; height: 96rpx; line-height: 96rpx; font-size: 32rpx; }

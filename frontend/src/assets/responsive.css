@@ -1,0 +1,78 @@
+/* ===================================
+   全局响应式工具样式
+   =================================== */
+
+/* 断点定义:
+   - 移动端: ≤768px
+   - 平板端: 769px - 1024px  
+   - 桌面端: >1024px (保持原有样式不变)
+*/
+
+/* 移动端隐藏 */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* 仅移动端显示 */
+.show-on-mobile {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .show-on-mobile {
+    display: flex !important;
+  }
+  .show-on-mobile-block {
+    display: block !important;
+  }
+}
+
+/* 移动端内边距调整 */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding: 12px !important;
+  }
+  .mobile-padding-sm {
+    padding: 8px !important;
+  }
+}
+
+/* 对话框响应式宽度 */
+@media (max-width: 768px) {
+  .el-dialog {
+    --el-dialog-width: 90% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* 移动端表格优化 */
+@media (max-width: 768px) {
+  .el-table {
+    font-size: 13px;
+  }
+  .el-table .el-table__header th {
+    padding: 8px 0;
+  }
+  .el-table .el-table__body td {
+    padding: 6px 0;
+  }
+}
+
+/* 移动端卡片间距 */
+@media (max-width: 768px) {
+  .el-card {
+    margin-bottom: 12px;
+  }
+  .el-card__body {
+    padding: 12px;
+  }
+}
+
+/* 移动端按钮优化 - 确保触控友好 */
+@media (max-width: 768px) {
+  .el-button--small {
+    min-height: 32px;
+    padding: 8px 12px;
+  }
+}

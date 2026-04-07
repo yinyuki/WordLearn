@@ -1,0 +1,43 @@
+<!--pages/stats/stats.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">📊 学习统计</text>
+    <text class="subtitle">查看你的学习数据</text>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-grid">
+    <view class="stat-card">
+      <text class="stat-value num-primary">{{stats.totalDays || 0}}</text>
+      <text class="stat-label">学习天数</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value num-success">{{stats.totalWords || 0}}</text>
+      <text class="stat-label">已学单词</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value num-warning">{{stats.todayWords || 0}}</text>
+      <text class="stat-label">今日新学</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value num-danger">{{stats.accuracy || 0}}%</text>
+      <text class="stat-label">正确率</text>
+    </view>
+  </view>
+
+  <!-- 周统计 -->
+  <view class="card">
+    <view class="card-header">
+      <view class="card-title">📈 本周学习</view>
+    </view>
+    <view class="week-chart">
+      <view class="day-bar" wx:for="{{weekData}}" wx:key="day">
+        <view class="bar" style="height: {{item.height}}rpx; background: {{item.color}}"></view>
+        <text class="day-label">{{item.day}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>

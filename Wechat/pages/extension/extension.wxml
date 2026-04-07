@@ -1,0 +1,120 @@
+<!--pages/extension/extension.wxml-->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">📚 拓展学习</text>
+    <text class="subtitle">日语、英语、俄语精选资源</text>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-section">
+    <view class="filter-row">
+      <text class="filter-label">语言：</text>
+      <view class="filter-buttons">
+        <view class="filter-btn {{filterLanguage === '' ? 'active' : ''}}" bindtap="setLanguage" data-value="">全部</view>
+        <view class="filter-btn {{filterLanguage === 'ENGLISH' ? 'active' : ''}}" bindtap="setLanguage" data-value="ENGLISH">🇬🇧 英语</view>
+        <view class="filter-btn {{filterLanguage === 'JAPANESE' ? 'active' : ''}}" bindtap="setLanguage" data-value="JAPANESE">🇯🇵 日语</view>
+        <view class="filter-btn {{filterLanguage === 'RUSSIAN' ? 'active' : ''}}" bindtap="setLanguage" data-value="RUSSIAN">🇷🇺 俄语</view>
+      </view>
+    </view>
+    <view class="filter-row">
+      <text class="filter-label">类型：</text>
+      <view class="filter-buttons">
+        <view class="filter-btn {{filterType === '' ? 'active' : ''}}" bindtap="setType" data-value="">全部</view>
+        <view class="filter-btn {{filterType === 'ARTICLE' ? 'active' : ''}}" bindtap="setType" data-value="ARTICLE">📄 文章</view>
+        <view class="filter-btn {{filterType === 'AUDIO' ? 'active' : ''}}" bindtap="setType" data-value="AUDIO">🎵 音频</view>
+        <view class="filter-btn {{filterType === 'VIDEO' ? 'active' : ''}}" bindtap="setType" data-value="VIDEO">🎬 视频</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 资源列表 -->
+  <view class="resource-list" wx:if="{{!loading}}">
+    <view class="empty" wx:if="{{resources.length === 0}}">
+      <text class="empty-icon">📚</text>
+      <text class="empty-text">暂无资源</text>
+    </view>
+    
+    <!-- 文章区域 -->
+    <view class="resource-section" wx:if="{{articleResources.length > 0}}">
+      <text class="section-title">📄 文章</text>
+      <view class="resource-grid">
+        <view class="resource-card {{item.isPinned ? 'is-pinned' : ''}}" 
+              wx:for="{{articleResources}}" wx:key="id" 
+              bindtap="openDetail" data-item="{{item}}">
+          <view class="card-cover cover-article">
+            <text class="tag tag-warning" wx:if="{{item.isPinned}}">📌</text>
+            <text class="play-icon">📄</text>
+          </view>
+          <view class="card-body">
+            <text class="card-title">{{item.title}}</text>
+            <text class="card-time">{{item.createdAt}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 音频区域 -->
+    <view class="resource-section" wx:if="{{audioResources.length > 0}}">
+      <text class="section-title">🎵 音频</text>
+      <view class="resource-grid">
+        <view class="resource-card {{item.isPinned ? 'is-pinned' : ''}}" 
+              wx:for="{{audioResources}}" wx:key="id" 
+              bindtap="openDetail" data-item="{{item}}">
+          <view class="card-cover cover-audio">
+            <text class="tag tag-warning" wx:if="{{item.isPinned}}">📌</text>
+            <text class="play-icon">🎵</text>
+          </view>
+          <view class="card-body">
+            <text class="card-title">{{item.title}}</text>
+            <text class="card-time">{{item.createdAt}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 视频区域 -->
+    <view class="resource-section" wx:if="{{videoResources.length > 0}}">
+      <text class="section-title">🎬 视频</text>
+      <view class="resource-grid">
+        <view class="resource-card {{item.isPinned ? 'is-pinned' : ''}}" 
+              wx:for="{{videoResources}}" wx:key="id" 
+              bindtap="openDetail" data-item="{{item}}">
+          <view class="card-cover cover-video">
+            <text class="tag tag-warning" wx:if="{{item.isPinned}}">📌</text>
+            <text class="play-icon">🎬</text>
+          </view>
+          <view class="card-body">
+            <text class="card-title">{{item.title}}</text>
+            <text class="card-time">{{item.createdAt}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>
+
+<!-- 详情弹窗 -->
+<view class="modal-mask" wx:if="{{detailVisible}}" bindtap="closeDetail">
+  <view class="modal-content" catchtap>
+    <view class="modal-header">
+      <text class="modal-title">{{currentResource.title}}</text>
+      <text class="close-btn" bindtap="closeDetail">✕</text>
+    </view>
+    <view class="modal-body">
+      <view wx:if="{{currentResource.type === 'ARTICLE'}}" class="article-content">
+        <text>{{currentResource.content}}</text>
+      </view>
+      <view wx:elif="{{currentResource.type === 'AUDIO'}}" class="audio-content">
+        <audio src="{{baseUrl}}{{currentResource.url}}" controls></audio>
+        <text class="media-desc" wx:if="{{currentResource.content}}">{{currentResource.content}}</text>
+      </view>
+      <view wx:elif="{{currentResource.type === 'VIDEO'}}" class="video-content">
+        <video src="{{baseUrl}}{{currentResource.url}}" controls style="width: 100%;"></video>
+        <text class="media-desc" wx:if="{{currentResource.content}}">{{currentResource.content}}</text>
+      </view>
+    </view>
+  </view>
+</view>

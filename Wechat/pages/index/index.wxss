@@ -1,0 +1,88 @@
+/* pages/index/index.wxss */
+.welcome-header {
+  background: linear-gradient(135deg, #409eff, #66b1ff);
+  margin: -30rpx -30rpx 30rpx;
+  padding: 40rpx 30rpx;
+  border-radius: 0 0 40rpx 40rpx;
+}
+.user-info { display: flex; align-items: center; }
+.welcome-text { margin-left: 20rpx; color: #fff; }
+.greeting { font-size: 32rpx; font-weight: bold; display: block; }
+.date { font-size: 24rpx; opacity: 0.9; margin-top: 8rpx; display: block; }
+
+.task-card { text-align: center; }
+.task-status { color: #67c23a; font-size: 24rpx; }
+.task-stats { display: flex; justify-content: space-around; margin: 30rpx 0; }
+.stat-item { text-align: center; }
+.stat-num { font-size: 56rpx; font-weight: bold; display: block; }
+.stat-label { font-size: 24rpx; color: #909399; margin-top: 10rpx; display: block; }
+.start-btn { width: 60%; margin-top: 20rpx; }
+
+.progress-card .progress-bar {
+  height: 16rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin: 20rpx 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #409eff, #67c23a);
+  border-radius: 8rpx;
+  transition: width 0.3s;
+}
+.progress-text { display: flex; justify-content: space-between; font-size: 24rpx; color: #909399; }
+
+.quick-entry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+.entry-item {
+  width: calc(50% - 10rpx);
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+.entry-icon { font-size: 48rpx; margin-bottom: 10rpx; }
+.entry-text { font-size: 26rpx; color: #606266; }
+
+/* 按钮组 */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+.btn-group button {
+  flex: 1;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+.btn-warning {
+  background: #e6a23c;
+  color: #fff;
+}
+.btn-success {
+  background: #67c23a;
+  color: #fff;
+}
+.btn-warning[disabled], .btn-success[disabled] {
+  opacity: 0.5;
+}
+
+/* 可点击任务项 */
+.stat-item {
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  transition: background 0.2s;
+}
+.stat-item:active {
+  background: rgba(64, 158, 255, 0.1);
+}

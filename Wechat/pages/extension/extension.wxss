@@ -1,0 +1,41 @@
+/* pages/extension/extension.wxss */
+.header {
+  background: linear-gradient(135deg, #409eff, #66b1ff);
+  padding: 40rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  color: white;
+}
+.title { font-size: 40rpx; font-weight: bold; display: block; }
+.subtitle { font-size: 26rpx; opacity: 0.9; margin-top: 10rpx; display: block; }
+
+.filter-section { background: white; padding: 20rpx; border-radius: 16rpx; margin-bottom: 20rpx; }
+.filter-row { display: flex; align-items: center; margin-bottom: 16rpx; }
+.filter-row:last-child { margin-bottom: 0; }
+.filter-label { font-size: 28rpx; color: #606266; width: 100rpx; flex-shrink: 0; }
+.filter-buttons { display: flex; flex-wrap: wrap; flex: 1; gap: 12rpx; }
+.filter-btn { padding: 10rpx 20rpx; background: #f4f4f5; border-radius: 20rpx; font-size: 24rpx; color: #606266; }
+.filter-btn.active { background: #409eff; color: white; }
+
+.resource-section { margin-bottom: 30rpx; }
+.section-title { font-size: 32rpx; font-weight: bold; color: #303133; margin-bottom: 20rpx; display: block; }
+.resource-grid { display: flex; flex-wrap: wrap; gap: 20rpx; }
+
+.resource-card { width: calc(50% - 10rpx); background: white; border-radius: 16rpx; overflow: hidden; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08); }
+.resource-card.is-pinned { border: 4rpx solid #e6a23c; }
+
+.card-cover { height: 180rpx; position: relative; display: flex; align-items: center; justify-content: center; }
+.cover-article { background: linear-gradient(135deg, #67c23a, #95d475); }
+.cover-audio { background: linear-gradient(135deg, #e6a23c, #f3d19e); }
+.cover-video { background: linear-gradient(135deg, #f56c6c, #fab6b6); }
+.card-cover .tag { position: absolute; top: 10rpx; left: 10rpx; padding: 4rpx 12rpx; border-radius: 10rpx; font-size: 20rpx; }
+.play-icon { font-size: 60rpx; }
+
+.card-body { padding: 16rpx; }
+.card-title { font-size: 28rpx; font-weight: bold; color: #303133; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-time { font-size: 22rpx; color: #c0c4cc; display: block; margin-top: 8rpx; }
+
+.modal-title { font-size: 32rpx; font-weight: bold; color: #303133; flex: 1; }
+.close-btn { font-size: 40rpx; color: #909399; padding: 10rpx; }
+.article-content { font-size: 28rpx; line-height: 1.8; color: #606266; }
+.media-desc { font-size: 28rpx; color: #606266; margin-top: 20rpx; display: block; }

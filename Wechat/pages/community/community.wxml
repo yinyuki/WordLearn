@@ -1,0 +1,51 @@
+<!--pages/community/community.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">💬 学习社区</text>
+    <button class="btn-primary btn-small" bindtap="showPostDialog">发帖</button>
+  </view>
+
+  <!-- 帖子列表 -->
+  <view class="post-list">
+    <view class="post-card" wx:for="{{posts}}" wx:key="id">
+      <view class="post-header">
+        <image class="avatar avatar-small" src="{{item.avatar || defaultAvatar}}"></image>
+        <view class="post-meta">
+          <text class="author">{{item.username}}</text>
+          <text class="time">{{item.createdAt}}</text>
+        </view>
+      </view>
+      <view class="post-content">{{item.content}}</view>
+      <view class="post-actions">
+        <view class="action-item {{item.isLiked ? 'liked' : ''}}" bindtap="toggleLike" data-id="{{item.id}}">
+          <text>{{item.isLiked ? '❤️' : '🤍'}} {{item.likes || item.likeCount || 0}}</text>
+        </view>
+        <view class="action-item" bindtap="showComments" data-post="{{item}}">
+          <text>💬 {{item.commentCount || 0}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{posts.length === 0 && !loading}}">
+    <text class="empty-icon">💬</text>
+    <text class="empty-text">暂无帖子，快来发第一帖吧！</text>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>
+
+<!-- 发帖弹窗 -->
+<view class="modal-mask" wx:if="{{showPost}}" bindtap="hidePostDialog">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text>发布动态</text>
+      <text class="close-btn" bindtap="hidePostDialog">✕</text>
+    </view>
+    <view class="modal-body">
+      <textarea class="post-input" placeholder="分享你的学习心得..." value="{{postContent}}" bindinput="onPostInput"></textarea>
+      <button class="btn-primary" bindtap="submitPost">发布</button>
+    </view>
+  </view>
+</view>

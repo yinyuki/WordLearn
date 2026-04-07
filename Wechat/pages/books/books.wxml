@@ -1,0 +1,37 @@
+<!--pages/books/books.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">📚 我的词书</text>
+  </view>
+
+  <!-- 词书列表 -->
+  <view class="book-list">
+    <view class="book-card" wx:for="{{books}}" wx:key="id" bindtap="selectBook" data-book="{{item}}">
+      <view class="book-cover" style="background: {{item.color || '#409eff'}}">
+        <text class="book-icon">📖</text>
+      </view>
+      <view class="book-info">
+        <text class="book-name">{{item.bookName}}</text>
+        <text class="book-count">{{item.wordCount || 0}} 个单词</text>
+        <view class="book-progress">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.progress || 0}}%"></view>
+          </view>
+          <text class="progress-text">{{item.progress || 0}}%</text>
+        </view>
+      </view>
+      <view class="book-status" wx:if="{{item.isSelected}}">
+        <text class="status-icon">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{books.length === 0 && !loading}}">
+    <text class="empty-icon">📚</text>
+    <text class="empty-text">暂无词书</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <!-- 背景装饰 -->
+  <view class="circle circle-1"></view>
+  <view class="circle circle-2"></view>
+
+  <!-- 登录卡片 -->
+  <view class="login-card">
+    <view class="card-header">
+      <text class="title">WordLearn</text>
+      <text class="subtitle">为者常成 行者常至</text>
+    </view>
+
+    <!-- Tab切换 -->
+    <view class="tabs">
+      <view class="tab {{activeTab === 'login' ? 'active' : ''}}" bindtap="switchTab" data-tab="login">登录</view>
+      <view class="tab {{activeTab === 'register' ? 'active' : ''}}" bindtap="switchTab" data-tab="register">注册</view>
+    </view>
+
+    <!-- 登录表单 -->
+    <view class="form" wx:if="{{activeTab === 'login'}}">
+      <view class="input-group">
+        <input class="input" placeholder="用户名" value="{{loginForm.username}}" bindinput="onLoginUsernameInput" />
+      </view>
+      <view class="input-group">
+        <input class="input" placeholder="密码" password="{{!showPassword}}" value="{{loginForm.password}}" bindinput="onLoginPasswordInput" />
+      </view>
+      <button class="submit-btn btn-primary" bindtap="handleLogin" loading="{{loading}}">立即登录</button>
+    </view>
+
+    <!-- 注册表单 -->
+    <view class="form" wx:if="{{activeTab === 'register'}}">
+      <view class="input-group">
+        <input class="input" placeholder="设置用户名" value="{{registerForm.username}}" bindinput="onRegisterUsernameInput" />
+      </view>
+      <view class="input-group">
+        <input class="input" placeholder="设置密码" password="{{!showPassword}}" value="{{registerForm.password}}" bindinput="onRegisterPasswordInput" />
+      </view>
+      <button class="submit-btn btn-success" bindtap="handleRegister" loading="{{loading}}">注册账号</button>
+    </view>
+  </view>
+
+  <view class="footer">© 2025 WordLearn</view>
+</view>

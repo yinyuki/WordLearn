@@ -1,0 +1,16 @@
+/* pages/mistakes/mistakes.wxss */
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30rpx; }
+.title { font-size: 40rpx; font-weight: bold; }
+.count { font-size: 26rpx; color: #909399; }
+
+.mistake-list { display: flex; flex-direction: column; gap: 20rpx; }
+.mistake-card { background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05); }
+.word-section { margin-bottom: 16rpx; }
+.word { font-size: 36rpx; font-weight: bold; color: #303133; }
+.phonetic { font-size: 26rpx; color: #909399; margin-left: 16rpx; }
+.meaning-section { margin-bottom: 16rpx; }
+.meaning { font-size: 28rpx; color: #606266; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16rpx; border-top: 1rpx solid #f0f0f0; }
+.error-count { font-size: 24rpx; color: #f56c6c; }
+.actions { display: flex; gap: 30rpx; }
+.action-btn { font-size: 26rpx; }

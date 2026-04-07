@@ -1,0 +1,33 @@
+<!--pages/mistakes/mistakes.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">📝 错题本</text>
+    <text class="count">共 {{mistakes.length}} 个</text>
+  </view>
+
+  <!-- 错题列表 -->
+  <view class="mistake-list">
+    <view class="mistake-card" wx:for="{{mistakes}}" wx:key="id">
+      <view class="word-section">
+        <text class="word">{{item.word}}</text>
+        <text class="phonetic" wx:if="{{item.phonetic}}">{{item.phonetic}}</text>
+      </view>
+      <view class="meaning-section">
+        <text class="meaning">{{item.meaning}}</text>
+      </view>
+      <view class="card-footer">
+        <text class="error-count">错误 {{item.errorCount || 1}} 次</text>
+        <view class="actions">
+          <text class="action-btn text-success" bindtap="markLearned" data-id="{{item.id}}">已掌握</text>
+          <text class="action-btn text-danger" bindtap="deleteMistake" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{mistakes.length === 0 && !loading}}">
+    <text class="empty-icon">🎉</text>
+    <text class="empty-text">太棒了！没有错题</text>
+  </view>
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>
