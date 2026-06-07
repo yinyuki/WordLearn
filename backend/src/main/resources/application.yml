@@ -18,7 +18,7 @@ spring:
 # 文件上传路径配置（使用绝对路径）
 file:
   upload:
-    path: C:/Users/Administrator/Desktop/word/uploads/learning
+    path: ./uploads/learning
 
 mybatis-plus:
   configuration:

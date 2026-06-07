@@ -72,3 +72,13 @@ word/
 
 4. 使用小程序端，用微信开发者工具打开Wechat目录，修改工具函数中的后端地址后编译。
 
+
+# 更新日志
+
+## 2026-06-07
+
+- **项目可移植性优化**：去除硬编码的绝对路径，改用相对路径和动态解析，使项目可在不同机器上直接运行而无需修改配置
+  - `application.yml`：文件上传路径从 `C:/Users/Administrator/Desktop/word/uploads/learning` 改为 `./uploads/learning`
+  - `WebMvcConfig.java`：静态资源映射从硬编码绝对路径改为根据 `uploadPath` 动态计算路径
+  - `.gitignore`：新增 `uploads/` 忽略规则，避免上传文件被 git 跟踪
+

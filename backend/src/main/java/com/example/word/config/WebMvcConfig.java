@@ -27,8 +27,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // 配置静态资源访问，映射项目根目录下的uploads文件夹
+        // 动态获取uploads根目录（uploadPath的父目录），支持跨设备移植
+        java.nio.file.Path uploadsRoot = java.nio.file.Paths.get(uploadPath).getParent();
+        if (uploadsRoot == null) {
+            uploadsRoot = java.nio.file.Paths.get("./uploads");
+        }
+        String resourceLocation = "file:" + uploadsRoot.toAbsolutePath().normalize() + "/";
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:C:/Users/Administrator/Desktop/word/uploads/");
+                .addResourceLocations(resourceLocation);
     }
 }

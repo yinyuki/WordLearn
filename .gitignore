@@ -32,6 +32,9 @@ Thumbs.db
 *.tar.gz
 *.rar
 
+# 上传文件
+uploads/
+
 # --- Node.js (前端) ---
 # 注意：frontend/ 目录下不需要单独的 .gitignore
 node_modules/
